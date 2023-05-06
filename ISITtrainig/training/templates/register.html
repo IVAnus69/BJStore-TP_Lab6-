@@ -16,6 +16,7 @@
         {{ field }}
         </p>
       {% endfor %}
+        <h2>Выбери свои компании</h2>
         {% for company in companies %}
         <input type="checkbox" name="companies" value="{{company.id}}">{{company.name}}<br>
         {% endfor %}
