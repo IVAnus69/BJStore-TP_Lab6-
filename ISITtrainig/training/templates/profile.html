@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ user.get_username }}{% endblock title %}</title>
+</head>
+<body>
+    {% block body %}
+    <h1>Привет, {{ user.get_username }}</h1>
+    <a href="/logout/">Выйти</a>
+    {% endblock body %}
+</body>
+</html>

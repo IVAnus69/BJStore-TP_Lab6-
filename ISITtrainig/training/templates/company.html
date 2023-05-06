@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{company.name}}{% endblock title %}</title>
+</head>
+<body>
+    {% block body %}
+    <h1>{{company.name}}</h1>
+    <label>Зарегистрируйте стажировку:</label>
+    <form method="POST" action="{% url 'create' company.id %}">
+        {% csrf_token %}
+        <ul>
+            <li><label>Название:
+                <input name="name" type="text">
+            </label></li>
+            <li><label>Направление:
+                <input name="direction" type="text">
+            </label></li>
+            <li><label>Дата:
+                <input name="date" type="date">
+            </label></li>
+            <li><label>Опыт:
+                <input name="exp" type="checkbox">
+            </label></li>
+            <li><label>Образование:
+                <input name="educ" type="checkbox">
+            </label></li>
+        </ul>
+        <button type="submit">Отправить данные</button>
+    </form>
+    <h2>Список стажировок:</h2>
+    <ul>
+        {% for training in listTrainings %}
+            <li><label>{{ training.name }}</label></li>
+        {% endfor %}
+    </ul>
+    {% endblock body %}
+</body>
+</html>

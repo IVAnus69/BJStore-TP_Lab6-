@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Регистрация{% endblock title %}</title>
+</head>
+<body>
+    {% block body%}
+    <h2>Регистрация</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        </p>
+      {% endfor %}
+        {% for company in companies %}
+        <input type="checkbox" name="companies" value="{{company.id}}">{{company.name}}<br>
+        {% endfor %}
+        <button type="submit">Регистрация</button>
+    </form>
+    {% endblock body %}
+</body>
+</html>
