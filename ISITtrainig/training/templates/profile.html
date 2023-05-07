@@ -8,6 +8,7 @@
 <body>
     {% block body %}
     <h1>Привет, {{ user.get_username }}</h1>
+    <img src="{{ profPic.url }}" width="100px"><br>
     <a href="/logout/">Выйти</a>
     {% endblock body %}
 </body>

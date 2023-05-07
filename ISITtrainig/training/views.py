@@ -87,7 +87,9 @@ def auth(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    prof = Profile.objects.get(user=request.user)
+    profPic = prof.profilePic
+    return render(request, 'profile.html', {'profPic': profPic})
 
 
 def close_log(request):
